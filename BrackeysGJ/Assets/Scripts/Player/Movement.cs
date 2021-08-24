@@ -10,15 +10,18 @@ public class Movement : MonoBehaviour
     [SerializeField] Transform body;
     //private
     CharacterController controller;
+    Animator animator;
     Vector3 moveDir;
 
     private void Start()
     {
         controller = GetComponent<CharacterController>();
+        animator = GetComponentInChildren<Animator>();
     }
     private void Update()
     {
         moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        animator.SetFloat("Horizontal", Mathf.Clamp(controller.velocity.magnitude, 0, 1));
         if (controller.velocity != Vector3.zero)
         {
             Vector3 dirToRot = transform.position - transform.position + controller.velocity;
