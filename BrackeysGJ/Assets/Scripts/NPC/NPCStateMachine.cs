@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.AI;
 using UnityEngine;
 
-public class SecurityGuardStateMachine : MonoBehaviour
+public class NPCStateMachine : MonoBehaviour
 {
     enum guardState
     {
@@ -17,6 +17,19 @@ public class SecurityGuardStateMachine : MonoBehaviour
     [Header("Patrolling")]
     [SerializeField] Transform[] patrolPoints;
     [SerializeField] bool flipFlopPatrol;
+
+    enum npcType
+    {
+        NPC,
+        Guard
+    }
+    [Header("Detection")]
+    [SerializeField] npcType type;
+    [SerializeField] float angle = 30;
+    [SerializeField] float viewRadius;
+    [SerializeField] LayerMask playerMask;
+    [SerializeField] LayerMask obstacleMask;
+    [SerializeField] Transform eyeLocation;
 
     //private
     NavMeshAgent agent;
@@ -42,6 +55,27 @@ public class SecurityGuardStateMachine : MonoBehaviour
                 break;
             case guardState.spotted:
                 break;
+        }
+
+        FOV();
+    }
+
+    void FOV()
+    {
+        Collider[] thingsNear = Physics.OverlapSphere(transform.position, viewRadius, playerMask);
+
+        if (thingsNear.Length >= 1 && Vector3.Angle(thingsNear[0].transform.position, transform.position) <= angle)
+        {
+            Debug.Log("Object near");
+            Vector3 dirToTarget = (thingsNear[0].transform.position - eyeLocation.transform.position).normalized;
+            if (!Physics.Raycast(eyeLocation.transform.position, dirToTarget, out RaycastHit hit, 100, obstacleMask))
+            {
+                Debug.Log("No Obstacle");
+                if ((FindObjectOfType<InventorySystemOneObject>().alertGuard && type == npcType.Guard) || (FindObjectOfType<InventorySystemOneObject>().alertNPC && type == npcType.NPC))
+                {
+                    Debug.Log("Caught");
+                }
+            }
         }
     }
 

@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4669823124911339278}
   - component: {fileID: 203112020993980191}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Beige Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
