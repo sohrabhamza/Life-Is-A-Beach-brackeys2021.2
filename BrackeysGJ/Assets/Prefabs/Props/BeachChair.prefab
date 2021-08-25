@@ -26,15 +26,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d00a5c37b7816c8478236ec3edca7cc3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -86.27437
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d00a5c37b7816c8478236ec3edca7cc3, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 62.814888
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d00a5c37b7816c8478236ec3edca7cc3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -27.611908
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d00a5c37b7816c8478236ec3edca7cc3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -46,11 +46,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d00a5c37b7816c8478236ec3edca7cc3, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d00a5c37b7816c8478236ec3edca7cc3, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d00a5c37b7816c8478236ec3edca7cc3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d00a5c37b7816c8478236ec3edca7cc3, type: 3}
       propertyPath: m_Name
-      value: BeachChair (1)
+      value: BeachChair
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d00a5c37b7816c8478236ec3edca7cc3, type: 3}

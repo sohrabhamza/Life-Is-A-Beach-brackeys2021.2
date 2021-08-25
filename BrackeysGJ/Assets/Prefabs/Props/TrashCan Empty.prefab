@@ -1,5 +1,18 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!65 &1903207553
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6756287952676836820}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.9822311, y: 2.2721024, z: 1.8776245}
+  m_Center: {x: 0.049404144, y: 1.0835762, z: 0.29351044}
 --- !u!136 &1903207554
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -14,19 +27,6 @@ CapsuleCollider:
   m_Height: 3.0265465
   m_Direction: 1
   m_Center: {x: 0.0434494, y: 1.1009007, z: 0.3033371}
---- !u!65 &1903207553
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6756287952676836820}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.9822311, y: 2.2721024, z: 1.8776245}
-  m_Center: {x: 0.049404144, y: 1.0835762, z: 0.29351044}
 --- !u!1001 &5837300400172099717
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40,15 +40,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dea68db48bc0acd4ab391fc5507da965, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -72
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dea68db48bc0acd4ab391fc5507da965, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 64.227264
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dea68db48bc0acd4ab391fc5507da965, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -41
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dea68db48bc0acd4ab391fc5507da965, type: 3}
       propertyPath: m_LocalRotation.w
@@ -60,11 +60,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dea68db48bc0acd4ab391fc5507da965, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dea68db48bc0acd4ab391fc5507da965, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: dea68db48bc0acd4ab391fc5507da965, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
