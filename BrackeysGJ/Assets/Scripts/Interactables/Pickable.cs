@@ -6,6 +6,8 @@ public class Pickable : MonoBehaviour
 {
     [SerializeField] GameObject icon;
     bool isPlayer;
+    [SerializeField] bool canAlertGuard;[SerializeField] bool canAlertNPC;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -18,8 +20,7 @@ public class Pickable : MonoBehaviour
     {
         if (isPlayer && Input.GetKeyDown(KeyCode.E))
         {
-            FindObjectOfType<InventorySystem>().AddToInventory(this.gameObject, icon);
-            gameObject.SetActive(false);
+            FindObjectOfType<InventorySystemOneObject>().PickUpObject(this.gameObject, icon, canAlertGuard, canAlertNPC);
         }
     }
 

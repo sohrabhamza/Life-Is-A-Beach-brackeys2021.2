@@ -19,6 +19,8 @@ public class InventorySystem : MonoBehaviour
     int cursorLocation = 0;
     GameObject player;
 
+    int[] hummus = { 1, 2, 3 };
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
