@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 2084058054440994243}
   - component: {fileID: 2084058054440994245}
   - component: {fileID: 8623906900614759421}
+  - component: {fileID: 8984691478528421221}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -78,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fe74804360667a4fa0ffa7ae38e83c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 8
   rotationSpeed: 10
   body: {fileID: 4390631794655792210}
 --- !u!143 &2084058054440994243
@@ -94,7 +95,7 @@ CharacterController:
   serializedVersion: 2
   m_Height: 3.5
   m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 1
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -128,6 +129,22 @@ MonoBehaviour:
   m_Area: 0
   m_IgnoreFromBuild: 1
   m_AffectedAgents: ffffffff
+--- !u!54 &8984691478528421221
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2084058054440994241}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!95 &2084058055561166796
 Animator:
   serializedVersion: 3
