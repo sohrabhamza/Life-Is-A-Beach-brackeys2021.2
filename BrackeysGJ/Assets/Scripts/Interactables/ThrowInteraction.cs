@@ -5,6 +5,11 @@ using UnityEngine;
 public class ThrowInteraction : MonoBehaviour
 {
     bool isPlayer;
+    AudioSource source;
+    private void Start()
+    {
+        source = GetComponent<AudioSource>();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -18,6 +23,7 @@ public class ThrowInteraction : MonoBehaviour
         if (isPlayer && Input.GetKeyDown(KeyCode.E))
         {
             FindObjectOfType<InventorySystemOneObject>().ThrowObject();
+            source.Play();
         }
     }
 

@@ -66,11 +66,9 @@ public class NPCStateMachine : MonoBehaviour
 
         if (thingsNear.Length >= 1 && Vector3.Angle(thingsNear[0].transform.position, transform.position) <= angle)
         {
-            Debug.Log("Object near");
             Vector3 dirToTarget = (thingsNear[0].transform.position - eyeLocation.transform.position).normalized;
             if (!Physics.Raycast(eyeLocation.transform.position, dirToTarget, out RaycastHit hit, 100, obstacleMask))
             {
-                Debug.Log("No Obstacle");
                 if ((FindObjectOfType<InventorySystemOneObject>().alertGuard && type == npcType.Guard) || (FindObjectOfType<InventorySystemOneObject>().alertNPC && type == npcType.NPC))
                 {
                     Debug.Log("Caught");
@@ -104,5 +102,10 @@ public class NPCStateMachine : MonoBehaviour
             }
 
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, viewRadius);
     }
 }
