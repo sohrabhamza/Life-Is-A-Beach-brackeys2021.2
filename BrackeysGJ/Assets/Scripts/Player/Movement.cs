@@ -12,9 +12,13 @@ public class Movement : MonoBehaviour
     CharacterController controller;
     Animator animator;
     Vector3 moveDir;
+    AudioSource audioData;
 
     private void Start()
     {
+        audioData = GetComponent<AudioSource>();
+        
+
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
     }
@@ -24,6 +28,7 @@ public class Movement : MonoBehaviour
         animator.SetFloat("Horizontal", Mathf.Clamp(controller.velocity.magnitude, 0, 1));
         if (controller.velocity != Vector3.zero)
         {
+            audioData.Play();
             Vector3 dirToRot = transform.position - transform.position + controller.velocity;
             Quaternion angleToRot = Quaternion.LookRotation(dirToRot, Vector3.up);
             body.transform.rotation = Quaternion.Lerp(body.transform.rotation, angleToRot, Time.deltaTime * rotationSpeed);
