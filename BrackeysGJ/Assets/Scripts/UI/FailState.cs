@@ -71,7 +71,7 @@ public class FailState : MonoBehaviour
     public void Continue()
     {
         DontDestroyOnLoad(gameObject);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
         catchScreen.SetActive(false);
     }
