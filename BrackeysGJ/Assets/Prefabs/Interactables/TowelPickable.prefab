@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   icon: {fileID: 7456776605627274612, guid: 96b915fb5daf9854f8f15bccd87b47a8, type: 3}
-  canAlertGuard: 0
+  canAlertGuard: 1
   canAlertNPC: 0
 --- !u!135 &3564660159772122097
 SphereCollider:

@@ -24,6 +24,7 @@ public class ThrowInteraction : MonoBehaviour
         {
             FindObjectOfType<InventorySystemOneObject>().ThrowObject();
             source.Play();
+            FailState.IncreaseChaos();
         }
     }
 

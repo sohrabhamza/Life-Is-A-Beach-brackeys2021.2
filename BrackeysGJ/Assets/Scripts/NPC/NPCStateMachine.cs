@@ -41,6 +41,8 @@ public class NPCStateMachine : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
+        agent.avoidancePriority = Random.Range(50, 99);
+        agent.speed = Random.Range(1, 3);
     }
 
     private void Update()
@@ -64,17 +66,46 @@ public class NPCStateMachine : MonoBehaviour
     {
         Collider[] thingsNear = Physics.OverlapSphere(transform.position, viewRadius, playerMask);
 
-        if (thingsNear.Length >= 1 && Vector3.Angle(thingsNear[0].transform.position, transform.position) <= angle)
+        if (thingsNear.Length >= 1)
         {
             Vector3 dirToTarget = (thingsNear[0].transform.position - eyeLocation.transform.position).normalized;
-            if (!Physics.Raycast(eyeLocation.transform.position, dirToTarget, out RaycastHit hit, 100, obstacleMask))
+            if (Vector3.Angle(transform.forward, dirToTarget) <= angle)
             {
-                if ((FindObjectOfType<InventorySystemOneObject>().alertGuard && type == npcType.Guard) || (FindObjectOfType<InventorySystemOneObject>().alertNPC && type == npcType.NPC))
+                Debug.Log(Vector3.Angle(transform.forward, dirToTarget));
+                if (!Physics.Raycast(eyeLocation.transform.position, dirToTarget, out RaycastHit hit, 100, obstacleMask))
                 {
-                    Debug.Log("Caught");
+                    if ((FindObjectOfType<InventorySystemOneObject>().alertGuard && type == npcType.Guard) || (FindObjectOfType<InventorySystemOneObject>().alertNPC && type == npcType.NPC))
+                    {
+                        if (!isLosing)
+                        { StartCoroutine(lifeLoosing()); }
+                        isLosing = true;
+                    }
+                    else
+                    {
+                        isLosing = false;
+                    }
+                }
+                else
+                {
+                    isLosing = false;
                 }
             }
+            else
+            {
+                isLosing = false;
+            }
         }
+    }
+
+    bool isLosing;
+    IEnumerator lifeLoosing()
+    {
+        yield return new WaitForSeconds(1);
+        if (isLosing)
+        {
+            FindObjectOfType<FailState>().loseALife();
+        }
+        isLosing = false;
     }
 
     void Patrolling()

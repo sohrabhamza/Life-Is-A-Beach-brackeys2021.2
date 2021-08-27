@@ -10,35 +10,53 @@ public class TimeSystem : MonoBehaviour
     [SerializeField] int endHour;
     [SerializeField] TextMeshProUGUI hourText;
 
-    int currentHour;
+    [HideInInspector] public int currentHour;
     bool nowPM;
     int curthing = 1;
+
+    float currentTime;
 
     private void Start()
     {
         currentHour = startHour;
         hourText.text = startHour.ToString() + "AM";
+        GetComponent<FailState>().hourNow = currentHour;
     }
     private void Update()
     {
-        // Debug.Log((int)Time.time + " " + (int)Time.time / secondsPerHour);
-        if ((int)Time.time / secondsPerHour == curthing && (int)Time.time != 0)
+        currentTime += Time.deltaTime;
+        // Debug.Log((int)currentTime + " " + (int)currentTime / secondsPerHour);
+        if ((int)currentTime / secondsPerHour == curthing && (int)currentTime != 0)
         {
+            GetComponent<FailState>().hourNow = currentHour;
             currentHour++;
             curthing++;
-            hourText.text = currentHour.ToString();
             if (nowPM)
             {
+                if (currentHour == 12)
+                {
+                    hourText.text = currentHour.ToString();
+                }
+                else
+                {
+                    hourText.text = (currentHour - 12).ToString();
+                }
                 hourText.text += "PM";
             }
             else
             {
+                hourText.text = currentHour.ToString();
                 hourText.text += "AM";
             }
-            if (currentHour == 12)
+            if (currentHour == 11)
             {
                 nowPM = true;
             }
+        }
+
+        if (currentHour >= endHour)
+        {
+            GetComponent<FailState>().Fail();
         }
     }
 }
