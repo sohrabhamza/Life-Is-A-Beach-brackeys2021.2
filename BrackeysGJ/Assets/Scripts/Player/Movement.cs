@@ -27,10 +27,12 @@ public class Movement : MonoBehaviour
             Vector3 dirToRot = transform.position - transform.position + controller.velocity;
             Quaternion angleToRot = Quaternion.LookRotation(dirToRot, Vector3.up);
             body.transform.rotation = Quaternion.Lerp(body.transform.rotation, angleToRot, Time.deltaTime * rotationSpeed);
+            body.transform.eulerAngles = new Vector3(0, body.transform.eulerAngles.y, 0);
         }
     }
     private void FixedUpdate()
     {
         controller.Move(moveDir * speed * Time.deltaTime);
+        transform.position = new Vector3(transform.position.x, 0.4f, transform.position.z);
     }
 }
