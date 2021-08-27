@@ -30,6 +30,7 @@ public class NPCStateMachine : MonoBehaviour
     [SerializeField] LayerMask playerMask;
     [SerializeField] LayerMask obstacleMask;
     [SerializeField] Transform eyeLocation;
+    [SerializeField] GameObject detectionThing;
 
     //private
     NavMeshAgent agent;
@@ -62,6 +63,7 @@ public class NPCStateMachine : MonoBehaviour
         FOV();
     }
 
+    GameObject detection;
     void FOV()
     {
         Collider[] thingsNear = Physics.OverlapSphere(transform.position, viewRadius, playerMask);
@@ -71,36 +73,63 @@ public class NPCStateMachine : MonoBehaviour
             Vector3 dirToTarget = (thingsNear[0].transform.position - eyeLocation.transform.position).normalized;
             if (Vector3.Angle(transform.forward, dirToTarget) <= angle)
             {
-                Debug.Log(Vector3.Angle(transform.forward, dirToTarget));
                 if (!Physics.Raycast(eyeLocation.transform.position, dirToTarget, out RaycastHit hit, 100, obstacleMask))
                 {
                     if ((FindObjectOfType<InventorySystemOneObject>().alertGuard && type == npcType.Guard) || (FindObjectOfType<InventorySystemOneObject>().alertNPC && type == npcType.NPC))
                     {
                         if (!isLosing)
-                        { StartCoroutine(lifeLoosing()); }
+                        { StartCoroutine(lifeLoosing(thingsNear[0].gameObject)); }
                         isLosing = true;
+                        if (detection != null)
+                        {
+                            detection.transform.LookAt(gameObject.transform);
+                            detection.transform.position = thingsNear[0].transform.position + new Vector3(0, 4, 0);
+                        }
                     }
                     else
                     {
                         isLosing = false;
+                        if (detection != null)
+                        {
+                            Destroy(detection);
+                        }
                     }
                 }
                 else
                 {
                     isLosing = false;
+                    if (detection != null)
+                    {
+                        Destroy(detection);
+                    }
                 }
             }
             else
             {
                 isLosing = false;
+                if (detection != null)
+                {
+                    Destroy(detection);
+                }
+            }
+        }
+        else
+        {
+            isLosing = false;
+            if (detection != null)
+            {
+                Destroy(detection);
             }
         }
     }
 
     bool isLosing;
-    IEnumerator lifeLoosing()
+    IEnumerator lifeLoosing(GameObject player)
     {
-        yield return new WaitForSeconds(1);
+        detection = Instantiate(detectionThing, player.transform);
+        detection.transform.SetParent(player.transform);
+        Debug.Log("Spawned " + detection);
+        yield return new WaitForSeconds(5);
         if (isLosing)
         {
             FindObjectOfType<FailState>().loseALife();

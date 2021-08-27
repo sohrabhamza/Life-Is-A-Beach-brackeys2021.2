@@ -126,6 +126,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   eyeLocation: {fileID: 2767801819818991643}
+  detectionThing: {fileID: 1427908569574779263, guid: b6c9491516d924c499f41065129b216d, type: 3}
 --- !u!195 &2767801819680437787
 NavMeshAgent:
   m_ObjectHideFlags: 0
