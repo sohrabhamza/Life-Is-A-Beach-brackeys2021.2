@@ -139,7 +139,7 @@ public class NPCStateMachine : MonoBehaviour
         detection = Instantiate(detectionThing, player.transform);
         detection.transform.SetParent(player.transform);
         Debug.Log("Spawned " + detection);
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.7f);
         if (isLosing)
         {
             FindObjectOfType<FailState>().loseALife();

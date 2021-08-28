@@ -80,6 +80,7 @@ public class FailState : MonoBehaviour
 
     public void Restart()
     {
+        hasWon = false;
         Destroy(gameObject);
         Time.timeScale = 1;
         SceneManager.LoadScene(1);
