@@ -72,7 +72,7 @@ MonoBehaviour:
   flipFlopPatrol: 1
   type: 1
   angle: 30
-  viewRadius: 10
+  viewRadius: 20
   playerMask:
     serializedVersion: 2
     m_Bits: 128

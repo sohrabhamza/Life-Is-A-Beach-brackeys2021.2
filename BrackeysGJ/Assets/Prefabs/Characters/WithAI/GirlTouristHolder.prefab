@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 2767801819680437786}
   - component: {fileID: 2767801819680437785}
   m_Layer: 0
-  m_Name: MaleTouristAI
+  m_Name: Brain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -116,7 +116,7 @@ MonoBehaviour:
   - {fileID: 2767801820693791606}
   - {fileID: 2767801819544683910}
   flipFlopPatrol: 1
-  type: 1
+  type: 0
   angle: 30
   viewRadius: 10
   playerMask:

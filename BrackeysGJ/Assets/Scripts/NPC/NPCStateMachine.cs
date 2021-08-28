@@ -82,7 +82,11 @@ public class NPCStateMachine : MonoBehaviour
                         isLosing = true;
                         if (detection != null)
                         {
-                            detection.transform.LookAt(gameObject.transform);
+                            Vector3 directionToRotate = transform.position - detection.transform.position;     //Rotate toward player from the point of view of the gun
+                            Quaternion rotate = Quaternion.LookRotation(directionToRotate);
+                            detection.transform.rotation = rotate;
+                            detection.transform.eulerAngles = new Vector3(0, detection.transform.eulerAngles.y, 0);
+
                             detection.transform.position = thingsNear[0].transform.position + new Vector3(0, 4, 0);
                         }
                     }
@@ -129,7 +133,7 @@ public class NPCStateMachine : MonoBehaviour
         detection = Instantiate(detectionThing, player.transform);
         detection.transform.SetParent(player.transform);
         Debug.Log("Spawned " + detection);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(.5f);
         if (isLosing)
         {
             FindObjectOfType<FailState>().loseALife();
