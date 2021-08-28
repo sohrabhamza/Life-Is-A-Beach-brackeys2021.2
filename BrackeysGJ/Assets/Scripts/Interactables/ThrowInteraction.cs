@@ -6,6 +6,7 @@ public class ThrowInteraction : MonoBehaviour
 {
     bool isPlayer;
     AudioSource source;
+    [SerializeField] GameObject prompt;
     private void Start()
     {
         source = GetComponent<AudioSource>();
@@ -15,6 +16,7 @@ public class ThrowInteraction : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayer = true;
+            prompt.SetActive(true);
         }
     }
 
@@ -33,6 +35,7 @@ public class ThrowInteraction : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayer = false;
+            prompt.SetActive(false);
         }
     }
 }

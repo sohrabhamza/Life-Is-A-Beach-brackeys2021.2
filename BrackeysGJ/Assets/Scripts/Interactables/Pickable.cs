@@ -8,11 +8,16 @@ public class Pickable : MonoBehaviour
     bool isPlayer;
     [SerializeField] bool canAlertGuard;[SerializeField] bool canAlertNPC;
 
+    [SerializeField] GameObject prompt;
+    bool isPicked = false;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             isPlayer = true;
+            if (!isPicked)
+            { prompt.SetActive(true); }
         }
     }
 
@@ -21,6 +26,8 @@ public class Pickable : MonoBehaviour
         if (isPlayer && Input.GetKeyDown(KeyCode.E))
         {
             FindObjectOfType<InventorySystemOneObject>().PickUpObject(this.gameObject, icon, canAlertGuard, canAlertNPC);
+            isPicked = true;
+            prompt.SetActive(false);
         }
     }
 
@@ -29,6 +36,8 @@ public class Pickable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isPlayer = false;
+            prompt.SetActive(false);
+            isPicked = false;
         }
     }
 }
