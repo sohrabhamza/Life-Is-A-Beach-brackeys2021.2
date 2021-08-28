@@ -13,6 +13,133 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2505188, y: 3.4668655, z: 1.2437592}
   m_Center: {x: 0.1252594, y: 1.7088776, z: -0.0039310455}
+--- !u!114 &2755780975600680658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5517856954330045214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abcb4b979d9c3d04782c06b24eac03a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GroundTypes:
+  - name: Sand
+    footstepSound:
+    - {fileID: 8300000, guid: 25d1d0eec9578df4193069977baf65bb, type: 3}
+    - {fileID: 8300000, guid: f951edf647227f6448f2e82e9e679b06, type: 3}
+    - {fileID: 8300000, guid: 5940d73d38a0fba408f1805ff508f19c, type: 3}
+  - name: Wood
+    footstepSound:
+    - {fileID: 8300000, guid: 635739bacc4aa39429c15474e5c9212d, type: 3}
+    - {fileID: 8300000, guid: cb41b681ed611a14f97cad64b20ad21c, type: 3}
+    - {fileID: 8300000, guid: a457b2a0ec48c4a46a84b0db6ee99942, type: 3}
+  - name: Stone
+    footstepSound:
+    - {fileID: 8300000, guid: 4b3cc4b1c9925fc47a7fc6f788faa117, type: 3}
+    - {fileID: 8300000, guid: 4e6a330210551cd47b2381e29d6a43d6, type: 3}
+    - {fileID: 8300000, guid: 4e6a330210551cd47b2381e29d6a43d6, type: 3}
+  currentGround: 
+  stepSource: {fileID: 4706787335141151609}
+  selectedSounds: []
+--- !u!82 &4706787335141151609
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5517856954330045214}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -472043801433754589, guid: ae63101f4d2a7f04b8c9027b882924fc, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 0.77
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 15
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &4634824672092874319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66,7 +193,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: e7140727d9bed844e9d83bc6ff824f1f, type: 3}
       propertyPath: m_Name
-      value: Security (1)
+      value: Security
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e7140727d9bed844e9d83bc6ff824f1f, type: 3}

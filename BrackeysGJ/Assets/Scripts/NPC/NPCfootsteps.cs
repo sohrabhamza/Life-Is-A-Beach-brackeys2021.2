@@ -2,13 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundSwitch : MonoBehaviour
+public class NPCfootsteps : MonoBehaviour
 {
     public List<GroundType> GroundTypes = new List<GroundType>();
     public string currentGround;
     public AudioSource stepSource;
     public AudioClip[] selectedSounds;
-    public AudioClip winSound;
     int disttoground = 3;
 
     // Start is called before the first frame update
@@ -16,24 +15,24 @@ public class GroundSwitch : MonoBehaviour
     {
         setGroundType(GroundTypes[0]);
         stepSource = GetComponent<AudioSource>();
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        //if (Physics.OverlapSphere(transform.position, 15f, out  hit ))
+        //{
+        //    raycast();
+        //}
+
         raycast();
-        if(FailState.hasWon == true)
-        {
-            stepSource.clip = winSound;
-            stepSource.PlayOneShot(winSound);
-        }
     }
 
-    
+
     private void raycast()
     {
-        if (Physics.Raycast(transform.position, -transform.up,  out RaycastHit hit, disttoground))
+        if (Physics.Raycast(transform.position, -transform.up, out RaycastHit hit, disttoground))
         {
             if (hit.transform.CompareTag("Wood"))
             {
@@ -49,7 +48,7 @@ public class GroundSwitch : MonoBehaviour
             }
         }
     }
-  
+
 
     public void playSound()
     {
@@ -58,13 +57,13 @@ public class GroundSwitch : MonoBehaviour
     }
     public void setGroundType(GroundType ground)
     {
-        if(currentGround != ground.name)
+        if (currentGround != ground.name)
         {
             selectedSounds = ground.footstepSound;
             currentGround = ground.name;
         }
 
-        
+
     }
 
     [System.Serializable]

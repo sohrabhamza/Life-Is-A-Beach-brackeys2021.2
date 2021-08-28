@@ -18,6 +18,9 @@ public class NPCStateMachine : MonoBehaviour
     [SerializeField] Transform[] patrolPoints;
     [SerializeField] bool flipFlopPatrol;
 
+    AudioSource guardAudio;
+    public AudioClip alertSFX;
+
     enum npcType
     {
         NPC,
@@ -40,6 +43,7 @@ public class NPCStateMachine : MonoBehaviour
 
     private void Start()
     {
+        guardAudio = GetComponent<AudioSource>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
         agent.avoidancePriority = Random.Range(50, 99);
@@ -130,6 +134,8 @@ public class NPCStateMachine : MonoBehaviour
     bool isLosing;
     IEnumerator lifeLoosing(GameObject player)
     {
+        guardAudio.PlayOneShot(alertSFX);
+
         detection = Instantiate(detectionThing, player.transform);
         detection.transform.SetParent(player.transform);
         Debug.Log("Spawned " + detection);

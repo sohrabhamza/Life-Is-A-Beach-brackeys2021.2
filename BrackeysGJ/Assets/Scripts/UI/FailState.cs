@@ -15,8 +15,10 @@ public class FailState : MonoBehaviour
     [SerializeField] int maxChaosL = 10;
 
     static GameObject win;
+    public static bool hasWon;
     static Slider chaosMeter;
     static int maxChaos = 10;
+
 
     private static FailState failInstance;
     static int chaos = 0;
@@ -89,6 +91,7 @@ public class FailState : MonoBehaviour
         chaosMeter.value = chaos;
         if (chaos >= maxChaos)
         {
+            hasWon = true;
             win.SetActive(true);
             Time.timeScale = 0;
         }
