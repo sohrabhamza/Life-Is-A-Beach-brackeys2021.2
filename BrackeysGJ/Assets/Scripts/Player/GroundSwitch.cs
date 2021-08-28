@@ -8,6 +8,7 @@ public class GroundSwitch : MonoBehaviour
     public string currentGround;
     public AudioSource stepSource;
     public AudioClip[] selectedSounds;
+    int disttoground = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -20,29 +21,29 @@ public class GroundSwitch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        if (hit.transform.tag == "Wood")
-        {
-            setGroundType(GroundTypes[1]);
-            Debug.Log("Wood");
-        }
-        else if(hit.transform.tag == "Stone")
-        {
-            setGroundType(GroundTypes[2]);
-            Debug.Log("Stone");
-        }
-        else
-        {
-            setGroundType(GroundTypes[0]);
-        }
-        Debug.Log("ColliderHit");
+        raycast();
     }
 
     
+    private void raycast()
+    {
+        if (Physics.Raycast(transform.position, -transform.up,  out RaycastHit hit, disttoground))
+        {
+            if (hit.transform.CompareTag("Wood"))
+            {
+                setGroundType(GroundTypes[1]);
+            }
+            else if (hit.transform.CompareTag("Stone"))
+            {
+                setGroundType(GroundTypes[2]);
+            }
+            else
+            {
+                setGroundType(GroundTypes[0]);
+            }
+        }
+    }
+  
 
     public void playSound()
     {
