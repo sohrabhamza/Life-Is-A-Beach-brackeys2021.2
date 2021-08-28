@@ -7,7 +7,7 @@ public class WavesScript : MonoBehaviour
     AudioSource wavesaudio;
     // bool keepFadeingIn;
     // bool keepFadeingOut;
-    int currentVolume = 0;
+    float currentVolume = 0f;
     [SerializeField] float lerpSpeed = 0.25f;
 
     private void Start()
@@ -27,7 +27,7 @@ public class WavesScript : MonoBehaviour
             // wavesaudio.Play();
             // wavesaudio.loop = true;
             // StartCoroutine("FadeIn(wavesaudio, .03f, 1f)");
-            currentVolume = 1;
+            currentVolume = 0.45f;
         }
     }
 
